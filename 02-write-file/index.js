@@ -8,11 +8,11 @@ const rl = readline.createInterface(stdin, stdout);
 const output = fs.createWriteStream(path.join(__dirname, 'text.txt'));
 
 
-console.log('Hello, enter text to write to the file. To exit the script type \"exit\" or press ctl+c\n');
+console.log('Hello, enter text to write to the file. To exit the script type \"exit\" or press CTRL+C\n');
 
-//Событие: 'exit'
+// Событие: 'exit':
 // В 'exit' Событие генерируется, когда процесс Node.js собирается завершить
-//  работу в результате:
+// работу в результате:
 // В process.exit() явно вызываемый метод;
 // Цикл событий Node.js больше не требует дополнительной работы.
 // Невозможно предотвратить выход из цикла событий на этом этапе, и однажды 
@@ -22,10 +22,10 @@ rl.on('exit', () => {
   console.log('Goodbye\n');
 });
 
-//Событие: 'line'
+// Событие: 'line':
 // В 'line' событие генерируется всякий раз, когда input поток получает ввод
 // конца строки (\n, \r, или \r\n). Обычно это происходит, когда пользователь
-// нажимает Входить ивввли Возвращение.
+// нажимает Входить или Возвращение.
 
 rl.on('line', (line) => {
   if (line.toString().trim() === 'exit') {
