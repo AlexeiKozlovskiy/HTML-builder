@@ -1,22 +1,24 @@
 const path = require('path');
 const fs = require('fs');
 
+// readdir() - метод для чтения содержимого дериктории
 
-// readdir()-метод для чтения содержимого дериктории
+// basename() - возвращает конечную часть пути, первым параметром принимает путь, 
+// вторым необязательным аргументом - расширение файла, которое нужно убрать из возвращаемого результата, убираю.
 
-// basename()- возвращает конечную часть пути, первым параметром принимает путь, 
-// вторым необязательным аргументом - расширение файла, которое нужно убрать 
-// из возвращаемого результата;
+// extname() - возвращает расширение файла переданного пути, c точкой.
 
-// extname()-возвращает расширение файла переданного пути;
+// fs.stat() - сведения о файле или каталоге. 
 
 fs.readdir(path.join(__dirname, 'secret-folder'), (err, files) => {
+    if(err) throw err;
     files.forEach(file => {
     fs.stat(path.join(__dirname, 'secret-folder', file), (err, stats) => {
+        if(err) throw err;
         const name = path.basename(file, path.extname(file));
-        const ext = path.extname(file).slice(1);
+        const extension = path.extname(file).slice(1);
         const size = stats.size;
-        console.log( `${name} - ${ext} - ${size/1000}Kb`);
+        console.log( `${name} - ${extension} - ${size/1000} kb`);
     });
   })
 });
