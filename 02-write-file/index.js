@@ -14,7 +14,9 @@ console.log('Hello, enter text to write to the file. To exit the script type \"e
 // /В 'SIGINT' событие генерируется всякий раз, когда input поток получает Ctrl + C ввод, обычно известный как SIGINT
 
 rl.on('SIGINT', () => {
+  rl.close();
   console.log('Goodbye\n');
+  // rl.close();
 });
 
 // Событие: 'line':
