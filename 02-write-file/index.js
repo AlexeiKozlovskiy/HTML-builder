@@ -10,15 +10,10 @@ const output = fs.createWriteStream(path.join(__dirname, 'text.txt'));
 
 console.log('Hello, enter text to write to the file. To exit the script type \"exit\" or press CTRL+C\n');
 
-// Событие: 'exit':
-// В 'exit' Событие генерируется, когда процесс Node.js собирается завершить
-// работу в результате:
-// В process.exit() явно вызываемый метод;
-// Цикл событий Node.js больше не требует дополнительной работы.
-// Невозможно предотвратить выход из цикла событий на этом этапе, и однажды 
-// все 'exit' слушатели завершили работу, процесс Node.js завершится.
+// Событие: 'SIGINT':
+// /В 'SIGINT' событие генерируется всякий раз, когда input поток получает Ctrl + C ввод, обычно известный как SIGINT
 
-rl.on('exit', () => {
+rl.on('SIGINT', () => {
   console.log('Goodbye\n');
 });
 
