@@ -15,10 +15,35 @@ fs.readdir(path.join(__dirname, 'secret-folder'), (err, files) => {
     files.forEach(file => {
     fs.stat(path.join(__dirname, 'secret-folder', file), (err, stats) => {
         if(err) throw err;
-        const name = path.basename(file, path.extname(file));
-        const extension = path.extname(file).slice(1);
-        const size = stats.size;
-        console.log( `${name} - ${extension} - ${size/1000} kb`);
+        if (stats.isFile()) {
+          const name = path.basename(file, path.extname(file));
+          const extension = path.extname(file).slice(1);
+          const size = stats.size;
+          console.log( `${name} - ${extension} - ${size/1000} kb`);
+        }
     });
   })
 });
+
+
+
+// let folder = path.join(__dirname, 'secret-folder');
+// fs.readdir(folder, (err, files) => {
+
+//   if (err) {
+//     console.log('EROR !!! ' + err.name);
+//     return;
+//   }
+
+//   files.forEach(file => {
+//     //расширение файла (вырезаем точку впереди)
+//     let ext = path.extname(file).slice(1);
+//     fs.stat(folder + '/' + file, function (err, stats) {
+//       if (stats.isFile()) {
+//         // название фала до запятой
+//         file = file.slice(0, file.lastIndexOf('.'));
+//         console.log(`${file} - ${ext} - ${stats.size / 1000} kb`);
+//       }
+//     });
+//   });
+// });
