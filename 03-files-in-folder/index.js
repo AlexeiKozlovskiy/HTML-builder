@@ -24,26 +24,3 @@ fs.readdir(path.join(__dirname, 'secret-folder'), (err, files) => {
     });
   })
 });
-
-
-
-// let folder = path.join(__dirname, 'secret-folder');
-// fs.readdir(folder, (err, files) => {
-
-//   if (err) {
-//     console.log('EROR !!! ' + err.name);
-//     return;
-//   }
-
-//   files.forEach(file => {
-//     //расширение файла (вырезаем точку впереди)
-//     let ext = path.extname(file).slice(1);
-//     fs.stat(folder + '/' + file, function (err, stats) {
-//       if (stats.isFile()) {
-//         // название фала до запятой
-//         file = file.slice(0, file.lastIndexOf('.'));
-//         console.log(`${file} - ${ext} - ${stats.size / 1000} kb`);
-//       }
-//     });
-//   });
-// });
